@@ -12,14 +12,14 @@ namespace Oblig1.Controllers
     {
         public ActionResult Index()
         {
-            if (Session["LoggetInn"] == null)
+            if (Session["LoggedIn"] == null)
             {
-                Session["LoggetInn"] = false;
-                ViewBag.Innlogget = false;
+                Session["LoggedIn"] = false;
+                ViewBag.LoggedIn = false;
             }
             else
             {
-                ViewBag.Innlogget = (bool)Session["LoggetInn"];
+                ViewBag.LoggedIn = (bool)Session["LoggedIn"];
             }
             
             return View();
@@ -30,26 +30,26 @@ namespace Oblig1.Controllers
         {
             if (Bruker_i_DB(user))
             {
-                Session["LoggetInn"] = true;
-                ViewBag.Innlogget = true;
+                Session["LoggedIn"] = true;
+                ViewBag.LoggedIn = true;
                 return View();
             }
             else
             {
-                Session["LoggetInn"] = false;
-                ViewBag.Innlogget = false;
+                Session["LoggedIn"] = false;
+                ViewBag.LoggedIn = false;
                 return View();
             }
             
         }
 
-        public ActionResult Registrer()
+        public ActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Registrer(Oblig1.Models.User user)
+        public ActionResult Register(Oblig1.Models.User user)
         {
             Oblig1.Models.PastaContext db = new PastaContext();
             if (ModelState.IsValid)
@@ -122,12 +122,12 @@ namespace Oblig1.Controllers
             }
         }
 
-        public ActionResult InnLoggetSide()
+        public ActionResult LoggedInSite()
         {
-            if (Session["LoggetInn"] != null)
+            if (Session["LoggedIn"] != null)
             {
-                bool loggetInn = (bool)Session["LoggetInn"];
-                if(loggetInn)
+                bool loggedIn = (bool)Session["LoggedIn"];
+                if(loggedIn)
                 {
                     return View();
                 }

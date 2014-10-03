@@ -21,7 +21,7 @@
         @Html.ValidationSummary(true)
     
         <fieldset>
-            <legend>Logg inn</legend>
+            <legend>Log in</legend>
     
             <div class="editor-label">
                 @Html.LabelFor(model => model.Email)
@@ -40,23 +40,23 @@
             </div>
     
             <p>
-                <input type="submit" value="Logg inn" />
+                <input type="submit" value="Log in" />
             </p>
-            @if (ViewBag.Innlogget)
+            @if (ViewBag.LoggedIn)
             {
-                <p style="color:blue">Logget inn</p>
+                <p style="color:blue">Logged in</p>
             }
             else
             {
-                <p style="color:red">Ikke logget inn</p>
+                <p style="color:red">Not logged in</p>
             }
         </fieldset>
     }
     
     <div>
         @Html.ActionLink("Back to List", "Index") <br />
-        @Html.ActionLink("Register bruker", "Registrer") <br />
-        @Html.ActionLink("Innlogget side", "InnLoggetSide") <br />
+        @Html.ActionLink("Register user", "Register") <br />
+        @Html.ActionLink("Logged in site", "LoggedInSite") <br />
 
     </div>
 </body>

@@ -222,8 +222,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\Registrer.cshtml" />
-    <Content Include="Views\User\InnLoggetSide.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\LoggedInSite.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
