@@ -251,6 +251,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\LoggedInSite.cshtml" />
+    <Content Include="Views\User\Minside.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -27,10 +27,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Button trigger modal -->
-                    @if (ViewBag.LoggedIn)
+                    @if (ViewBag.LoggedIn == true)
                     {
-                        
-                        <li data-toggle="modal" data-target="#myModal"> @Html.ActionLink("  MinSide", "Create", "", new { @class = "glyphicon glyphicon-user" })</li>
+                        <li>@Html.ActionLink("  MinSide", "Minside", "", new { @class = "glyphicon glyphicon-user" })</li>
                         <li>@Html.ActionLink("  LoggUt", "Create", "", new { @class = "glyphicon glyphicon-log-out" })</li>    
                     }
                     else

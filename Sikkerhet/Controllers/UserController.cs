@@ -134,5 +134,12 @@ namespace Oblig1.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public ActionResult Minside()
+        {
+            return View();
+        }
+
+
     }
 }
