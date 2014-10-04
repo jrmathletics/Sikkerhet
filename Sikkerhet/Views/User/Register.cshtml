@@ -1,20 +1,5 @@
 ﻿@model Oblig1.Models.User
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Register</title>
-</head>
-<body>
-    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()

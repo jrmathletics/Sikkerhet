@@ -1,16 +1,179 @@
-﻿<!DOCTYPE html>
+﻿@model Oblig1.Models.User
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    @RenderBody()
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-brand">
+                    @Html.ActionLink("  PastaSjappa", "Index", "", new { area = "" }, new { @class = "glyphicon glyphicon-home" })
+                </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Button trigger modal -->
+                    @if (ViewBag.LoggedIn)
+                    {
+                        
+                        <li data-toggle="modal" data-target="#myModal"> @Html.ActionLink("  MinSide", "Create", "", new { @class = "glyphicon glyphicon-user" })</li>
+                        <li>@Html.ActionLink("  LoggUt", "Create", "", new { @class = "glyphicon glyphicon-log-out" })</li>    
+                    }
+                    else
+                    {
+                        <li data-toggle="modal" data-target="#myModal"> @Html.ActionLink("  LoggInn", "Create", "", new { @class = "glyphicon glyphicon-log-in" })</li>    
+                    }
+                    <li>@Html.ActionLink("  Kassen", "Create", "", new { area = "" }, new { @class = "glyphicon glyphicon-shopping-cart" })</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Logg inn</h4>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+                        <fieldset>
+
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.Email)
+                            </div>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.Email)
+                                @Html.ValidationMessageFor(model => model.Email)
+                            </div>
+
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.Password)
+                            </div>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.Password)
+                                @Html.ValidationMessageFor(model => model.Password)
+                            </div>
+
+                        </fieldset>
+
+                    <div class="modal-footer">                        
+                           <p data-toggle="modal" data-target="#registrerModal" data-dismiss="modal"> @Html.ActionLink("Registrer bruker", "") </p> 
+                            @Html.ActionLink("Logged in site", "LoggedInSite")
+                        
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" value="Log in">Logg inn</button>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="registrerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Logg inn</h4>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+                        <fieldset>
+                            <legend>Register user</legend>
+
+                            <div class="editor-field">
+                                @Html.LabelFor(model => model.Firstname)
+                                @Html.EditorFor(model => model.Firstname)
+                                @Html.ValidationMessageFor(model => model.Firstname)
+                            </div>
+
+                            <div class="editor-field">
+                                @Html.LabelFor(model => model.Surname)
+                                @Html.EditorFor(model => model.Surname)
+                                @Html.ValidationMessageFor(model => model.Surname)
+                            </div>
+
+                            <div class="editor-field">
+                                @Html.LabelFor(model => model.Email)
+                                @Html.EditorFor(model => model.Email)
+                                @Html.ValidationMessageFor(model => model.Email)
+                            </div>
+
+                            <div class="editor-field">
+                                @Html.LabelFor(model => model.Address)
+                                @Html.EditorFor(model => model.Address)
+                                @Html.ValidationMessageFor(model => model.Address)
+                            </div>
+
+                            <div class="editor-field">
+                                @Html.LabelFor(model => model.city.Cityname)
+                                @Html.EditorFor(model => model.city.Cityname)
+                                @Html.ValidationMessageFor(model => model.city.Cityname)
+                            </div>
+
+                            <div class="editor-field">
+                                @Html.LabelFor(model => model.city.Postcode)
+                                @Html.EditorFor(model => model.city.Postcode)
+                                @Html.ValidationMessageFor(model => model.city.Postcode)
+                            </div>
+                            
+                            <div class="editor-field">
+                                @Html.LabelFor(model => model.Phonenr)
+                                @Html.EditorFor(model => model.Phonenr)
+                                @Html.ValidationMessageFor(model => model.Phonenr)
+                            </div>
+
+                            <div class="editor-field">
+                                @Html.LabelFor(model => model.Password)
+                                @Html.EditorFor(model => model.Password)
+                                @Html.ValidationMessageFor(model => model.Password)
+                            </div>
+
+                            <p>
+                                <input type="submit" value="Register" />
+                            </p>
+                        </fieldset>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
