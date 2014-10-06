@@ -24,6 +24,13 @@ namespace Oblig1.Controllers
             
             return View();
         }
+
+        public ActionResult LogOut()
+        {
+            Session["LoggedIn"] = false;
+            ViewBag.LoggedIn = false;
+            return RedirectToAction("Index");
+        }
         
         [HttpPost]
         public ActionResult Index(Oblig1.Models.User user)
@@ -43,6 +50,7 @@ namespace Oblig1.Controllers
             
         }
 
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -78,6 +86,7 @@ namespace Oblig1.Controllers
                     }
                     else
                     {
+                        Debug.WriteLine("4");
                         user.city = foundCity;
                         db.Users.Add(user);
                         db.dbUsers.Add(newUser);
@@ -92,7 +101,7 @@ namespace Oblig1.Controllers
 
 
             }
-
+            Debug.WriteLine("5");
             return View(user);
         }
         private static byte[] createHash(string inPassword)
@@ -108,6 +117,7 @@ namespace Oblig1.Controllers
         {
             using (var db = new PastaContext())
             {
+                Debug.WriteLine("BRUKER I DB SJEKKER");
                 byte[] passordDb = createHash(user.Password);
                 dbUser foundUser = db.dbUsers.FirstOrDefault
                     (b => b.Password == passordDb && b.Email == user.Email);
@@ -139,6 +149,8 @@ namespace Oblig1.Controllers
         {
             return View();
         }
+
+        
 
 
     }
