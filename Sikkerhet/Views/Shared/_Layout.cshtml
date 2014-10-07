@@ -37,7 +37,15 @@
                     {
                         <li data-toggle="modal" data-target="#myModal"> @Html.ActionLink("  LoggInn", "Create", "", new { @class = "glyphicon glyphicon-log-in" })</li>    
                     }
-                    <li>@Html.ActionLink("  Kassen", "Create", "", new { area = "" }, new { @class = "glyphicon glyphicon-shopping-cart" })</li>
+                    
+                    @if (ViewBag.LoggedIn == true)
+                    {
+                        <li>@Html.ActionLink("  Kassen", "Kasse", "", new { area = "" }, new { @class = "glyphicon glyphicon-shopping-cart" })</li>
+                    }
+                    else
+                    {
+                        <li data-toggle="modal" data-target="#myModal">@Html.ActionLink("  Kassen", "Kasse", "", new { area = "" }, new { @class = "glyphicon glyphicon-shopping-cart" })</li>
+                    }
                 </ul>
             </div>
         </div>

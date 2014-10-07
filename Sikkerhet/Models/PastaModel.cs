@@ -82,6 +82,7 @@ namespace Oblig1.Models
         public int Itemprice { get; set; }
         public int Currentstock { get; set; }
         public string Itemtype { get; set; }
+        public string pictureURL { get; set; }
         public virtual List<OrderLine> Orderlines { get; set; }
     }
 

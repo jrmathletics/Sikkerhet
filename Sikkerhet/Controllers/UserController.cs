@@ -21,9 +21,10 @@ namespace Oblig1.Controllers
             {
                 ViewBag.LoggedIn = (bool)Session["LoggedIn"];
             }
-            
             return View();
         }
+
+
 
         public ActionResult LogOut()
         {
@@ -147,11 +148,30 @@ namespace Oblig1.Controllers
 
         public ActionResult Minside()
         {
+            if (Session["LoggedIn"] == null)
+            {
+                Session["LoggedIn"] = false;
+                ViewBag.LoggedIn = false;
+            }
+            else
+            {
+                ViewBag.LoggedIn = (bool)Session["LoggedIn"];
+            }
             return View();
         }
 
-        
-
-
+        public ActionResult Kasse()
+        {
+            if (Session["LoggedIn"] == null)
+            {
+                Session["LoggedIn"] = false;
+                ViewBag.LoggedIn = false;
+            }
+            else
+            {
+                ViewBag.LoggedIn = (bool)Session["LoggedIn"];
+            }
+            return View();
+        }
     }
 }

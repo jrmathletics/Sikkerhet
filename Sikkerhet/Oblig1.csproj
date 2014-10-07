@@ -252,6 +252,7 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\LoggedInSite.cshtml" />
     <Content Include="Views\User\Minside.cshtml" />
+    <Content Include="Views\User\Kasse.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
